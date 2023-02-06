@@ -98,7 +98,12 @@ export class VideoRecorder {
 
     const w = options.width;
     const h = options.height;
-    const args = `-loglevel error -f image2pipe -avioflags direct -fpsprobesize 0 -probesize 32 -analyzeduration 0 -c:v mjpeg -i - -y -an -r ${fps} -c:v vp8 -qmin 0 -qmax 50 -crf 8 -deadline realtime -speed 8 -b:v 1M -threads 1 -vf pad=${w}:${h}:0:0:gray,crop=${w}:${h}:0:0`.split(' ');
+    const threads = options.ffmpeg?.threads || 1;
+    const qmin = options.ffmpeg?.qmin || 0;
+    const qmax = options.ffmpeg?.qmax || 50;
+    const crf = options.ffmpeg?.crf || 8;
+    const bitrate = options.ffmpeg?.bitrate || '1M';
+    const args = `-loglevel error -f image2pipe -avioflags direct -fpsprobesize 0 -probesize 32 -analyzeduration 0 -c:v mjpeg -i - -y -an -r ${fps} -c:v vp8 -qmin ${qmin} -qmax ${qmax} -crf ${crf} -deadline realtime -speed 8 -b:v ${bitrate} -threads ${threads} -vf pad=${w}:${h}:0:0:gray,crop=${w}:${h}:0:0`.split(' ');
     args.push(options.outputFile);
     const progress = this._progress;
 

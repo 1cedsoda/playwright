@@ -51,7 +51,16 @@ export type PointerActionWaitOptions = TimeoutOptions & ForceOptions & StrictOpt
 export type PageScreencastOptions = {
   width: number,
   height: number,
+  ffmpeg?: FfmpegOptions,
   outputFile: string,
+};
+
+export type FfmpegOptions = {
+  threads?: number,
+  qmin?: number,
+  qmax?: number,
+  crf?: number,
+  bitrate?: string,
 };
 
 export type Credentials = {

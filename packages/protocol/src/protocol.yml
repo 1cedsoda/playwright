@@ -469,6 +469,14 @@ ContextOptions:
           properties:
             width: number
             height: number
+        ffmpeg:
+          type: object?
+          properties:
+            threads: number?
+            qmin: number?
+            qmax: number?
+            crf: number?
+            bitrate: string?
     recordHar: RecordHarOptions?
     strictSelectors: boolean?
     serviceWorkers:

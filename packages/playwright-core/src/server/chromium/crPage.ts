@@ -472,6 +472,7 @@ class FrameSession {
       screencastOptions = {
         // validateBrowserContextOptions ensures correct video size.
         ...this._crPage._browserContext._options.recordVideo.size!,
+        ffmpeg: { ...this._crPage._browserContext._options.recordVideo.ffmpeg },
         outputFile,
       };
       await this._crPage._browserContext._ensureVideosPath();

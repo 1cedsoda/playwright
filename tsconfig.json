@@ -2,7 +2,11 @@
   "compilerOptions": {
     "target": "ES2019",
     "module": "commonjs",
-    "lib": ["esnext", "dom", "DOM.Iterable"],
+    "lib": [
+      "esnext",
+      "dom",
+      "DOM.Iterable"
+    ],
     "baseUrl": ".",
     "paths": {
       /*
@@ -10,11 +14,21 @@
          - @foo is for importing types only,
          - foo/lib means require dependency
       */
-      "@html-reporter/*": ["./packages/html-reporter/src/*"],
-      "@protocol/*": ["./packages/protocol/src/*"],
-      "@recorder/*": ["./packages/recorder/src/*"],
-      "@trace/*": ["./packages/trace/src/*"],
-      "playwright-core/lib/*": ["./packages/playwright-core/src/*"]
+      "@html-reporter/*": [
+        "./packages/html-reporter/src/*"
+      ],
+      "@protocol/*": [
+        "./packages/protocol/src/*"
+      ],
+      "@recorder/*": [
+        "./packages/recorder/src/*"
+      ],
+      "@trace/*": [
+        "./packages/trace/src/*"
+      ],
+      "playwright-core/lib/*": [
+        "./packages/playwright-core/src/*"
+      ]
     },
     "esModuleInterop": true,
     "strict": true,
@@ -26,7 +40,9 @@
     "useUnknownInCatchVariables": false,
   },
   "compileOnSave": true,
-  "include": ["packages"],
+  "include": [
+    "packages"
+  ],
   "exclude": [
     "packages/*/lib",
     "packages/html-reporter",

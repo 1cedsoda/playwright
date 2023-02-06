@@ -100,6 +100,71 @@ const path = await page.video().path();
 const path = await page.video().path();
 ```
 
+### Thuning the video quality
+* langs: js
+
+The used ffmpeg video codex is the `vp8`.
+You can find more information about the codex parameters [here](https://www.webmproject.org/docs/encoder-parameters/)
+
+
+```js tab=js-js
+// @ts-check
+
+const { defineConfig } = require('@playwright/test');
+
+module.exports = defineConfig({
+  use: {
+    video: {
+      mode: 'on-first-retry', 
+      size: { width: 640, height: 480 },
+      ffmpeg: {
+        threads: 1,
+        qmin: 0,
+        qmax: 50,
+        crf: 8,
+        bitrate: '1M',
+      }
+    }
+  },
+});
+```
+
+```js tab=js-ts
+import { defineConfig } from '@playwright/test';
+export default defineConfig({
+  use: {
+    video: {
+      mode: 'on-first-retry', 
+      size: { width: 640, height: 480 },
+      ffmpeg: {
+        threads: 1,
+        qmin: 0,
+        qmax: 50,
+        crf: 8,
+        bitrate: '1M',
+      }
+    }
+  },
+});
+```
+
+```js tab=js-library
+const context = await browser.newContext({
+  recordVideo: {
+    dir: 'videos/',
+    size: { width: 640, height: 480 },
+    ffmpeg: {
+        threads: 1,
+        qmin: 0,
+        qmax: 50,
+        crf: 8,
+        bitrate: '1M',
+      }
+  }
+});
+```
+
+
 :::note
 Note that the video is only available after the page or browser context is closed.
 :::
